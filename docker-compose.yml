@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mongo1:
+    image: mongo:4.4
+    hostname: mongo1
+    container_name: mongo1
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+      - MONGO_REPLICA_SET_NAME=${MONGODB_REPLICA_SET_NAME}
+      - MONGO_REPLICA_SET_KEY=${MONGODB_REPLICA_SET_KEY}
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo1_data:/data/db
+
+volumes:
+  mongo1_data:
